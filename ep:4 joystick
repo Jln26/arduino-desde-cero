@@ -1,0 +1,52 @@
+//Autor Jln_26 
+
+void setup() {
+  Serial.begin(9600); // inicializa el serial a 9600 baudios
+  pinMode(3, OUTPUT); // pin 3 a modo salida
+  pinMode(4, OUTPUT); // pin 4 a modo salida
+  pinMode(5, OUTPUT); // pin 5 a modo salida
+  pinMode(6, OUTPUT); // pin 6 a modo salida
+  pinMode(7, OUTPUT); // pin 7 a modo salida
+  pinMode(2, INPUT);  // pin 2 a modo entrada
+}
+
+void loop() {
+  Serial.println("X");  //escribe X en monitor serial
+  Serial.println(analogRead(A0)); //escribe los datos de el joystick de el eje X
+  Serial.println("Y"); //escribe Y en monitor serial
+  Serial.println(analogRead(A1)); //escribe los datos de el joystick de el eje Y
+  delay(100); //espera 0.1 segundos
+
+  if(analogRead(A0) > 550){ //si los datos de el eje X del joystick son mayores a 550
+    digitalWrite(4, HIGH); //Pin 4 HIGH
+  }
+  else{ // si no es mayor a 550
+    digitalWrite(4, LOW); //pin 4 LOW
+  }
+if(analogRead(A0) < 470){ //si los datos del eje X del joystick son menores a 470
+  digitalWrite(6, HIGH); //pin 6 HIGH
+}
+else{ //si no es menor a 470
+  digitalWrite(6, LOW); //pin 6 LOW
+}
+if(analogRead(A1) > 550){ //si los datos de el eje Y del joystick son mayores a 550
+    digitalWrite(5, HIGH); //pin 5 HIGH
+  }
+  else{// si no es mayor a 550
+    digitalWrite(5, LOW); //pin 5 LOW
+  }
+if(analogRead(A1) < 470){ //si los datos del el eje Y del joystick son menores a 470
+  digitalWrite(3, HIGH); //pin 3 HIGH
+}
+else{ //si no es menor a 470
+  digitalWrite(3, LOW);//pin 3 LOW
+}
+if(digitalRead(2) == HIGH){ //si pin 2 es igual a HIGH
+  digitalWrite(7, HIGH); //pin 7 HIGH
+}
+else{ //si pin 2 no es igual a HIGH
+  digitalWrite(7, LOW); //pin 7 LOW
+}
+
+  
+}
